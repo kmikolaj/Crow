@@ -43,11 +43,19 @@ option(CROW_INSTALL            "Add install step for Crow"              ON )
 # Possible values: ssl, compression
 option(CROW_FEATURES					 "Enable features extending Crow's abilities" "")
 
+# Internal ASIO
+option(CROW_INTERNAL_ASIO      "Use internal asio from git submodule"   OFF)
+
 #####################################
 # Define Targets
 #####################################
 add_library(Crow INTERFACE)
 add_library(Crow::Crow ALIAS Crow)
+
+# Set internal asio directory
+if(CROW_INTERNAL_ASIO)
+	set(ASIO_INCLUDE_DIR submodules/asio/asio/include)
+endif()
 
 target_include_directories(Crow
 	INTERFACE
