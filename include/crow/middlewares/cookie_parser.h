@@ -1,6 +1,6 @@
 #pragma once
-#include <iomanip>
 #include <memory>
+#include "crow/compat.h"
 #include "crow/utility.h"
 #include "crow/http_request.h"
 #include "crow/http_response.h"
@@ -68,7 +68,7 @@ namespace crow
                 if (expires_at_)
                 {
                     ss << DIVIDER << "Expires="
-                       << std::put_time(expires_at_.get(), HTTP_DATE_FORMAT);
+                       << put_time(expires_at_.get(), HTTP_DATE_FORMAT);
                 }
                 if (max_age_)
                 {

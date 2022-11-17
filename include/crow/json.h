@@ -20,9 +20,25 @@
 #include "crow/returnable.h"
 #include "crow/logging.h"
 
+#ifndef GCC_VERSION
+#ifdef __GNUC__
+#define GCC_VERSION (__GNUC__ * 10000 + __GNUC_MINOR__ * 100 + __GNUC_PATCHLEVEL__)
+#define GCC_VERSION_STR __VERSION__
+#endif
+#endif
+
+#ifdef __GNUC__
+#if GCC_VERSION < 40804
+#ifndef _GLIBCXX_HAVE_OBSOLETE_ISINF_ISNAN
+#define _GLIBCXX_HAVE_OBSOLETE_ISINF_ISNAN
+#endif
+#endif
+#endif
+
+#ifndef _GLIBCXX_HAVE_OBSOLETE_ISINF_ISNAN
 using std::isinf;
 using std::isnan;
-
+#endif
 
 namespace crow
 {
