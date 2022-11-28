@@ -149,7 +149,7 @@ namespace crow
             return *this;
         }
 
-        std::vector<int> signals()
+        std::vector<int> get_signals()
         {
             return signals_;
         }
