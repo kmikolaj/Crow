@@ -27,7 +27,7 @@
 #endif
 #endif
 
-#ifdef __GNUC__
+#if defined(__GNUC__) && !defined(__llvm__)
 #if GCC_VERSION < 40804
 #ifndef _GLIBCXX_HAVE_OBSOLETE_ISINF_ISNAN
 #define _GLIBCXX_HAVE_OBSOLETE_ISINF_ISNAN
